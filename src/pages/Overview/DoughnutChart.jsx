@@ -27,6 +27,7 @@ export default function DoughnutChart({ items = [] }) {
         // Outer ring
         data: dataValues,
         backgroundColor: OUTER_COLORS,
+        hoverBackgroundColor: OUTER_COLORS,
         borderWidth: 0,
         radius: "100%",
         cutout: "55%",
@@ -35,6 +36,7 @@ export default function DoughnutChart({ items = [] }) {
         // Inner ring
         data: dataValues,
         backgroundColor: INNER_COLORS,
+        hoverBackgroundColor: INNER_COLORS,
         borderWidth: 0,
         radius: "100%",
         cutout: "67%",
