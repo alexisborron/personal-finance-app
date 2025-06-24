@@ -49,6 +49,9 @@
 }
 
 body {
+  margin-inline: var(--spacing-200);
+  margin-top: var(--spacing-300);
+  margin-bottom: calc(var(--spacing-500) * 2);
   font-family: "Public Sans", Helvetica, Arial, sans-serif;
   letter-spacing: 0px;
   font-weight: 400;

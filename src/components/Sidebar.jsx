@@ -29,7 +29,7 @@ function Sidebar() {
           </NavLink>
         </li>
         <li className="flex h-full flex-col items-center">
-          <NavLink to="/pots" className={navLinkClass}>
+          <NavLink to="/transactions" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
                 <svg
@@ -49,7 +49,7 @@ function Sidebar() {
           </NavLink>
         </li>
         <li className="flex h-full flex-col items-center">
-          <NavLink to="/transactions" className={navLinkClass}>
+          <NavLink to="/budgets" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
                 <svg
@@ -69,7 +69,7 @@ function Sidebar() {
           </NavLink>
         </li>
         <li className="flex h-full flex-col items-center">
-          <NavLink to="/budgets" className={navLinkClass}>
+          <NavLink to="/pots" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
                 <svg
