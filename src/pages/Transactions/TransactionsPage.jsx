@@ -1,0 +1,32 @@
+import SearchIcon from "../../assets/images/icon-search.svg";
+import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
+import SortIcon from "../../assets/images/icon-sort-mobile.svg";
+import TransactionList from "./TransactionList";
+
+function TransactionsPage({ data }) {
+  return (
+    <main>
+      <h1 className="text-heading mb-400">Transactions</h1>
+      <section className="card-base bg-white py-250 sm:py-400">
+        <div className="mb-50 flex items-center gap-250">
+          <div className="relative flex flex-1 items-center">
+            <img
+              src={SearchIcon}
+              className="absolute right-250 h-[16px] w-[16px]"
+              alt="Search Icon"
+            />
+            <input
+              type="search"
+              className="border-beige-500 text-beige-500 w-full rounded-lg border-1 px-250 py-150 text-sm"
+            ></input>
+          </div>
+          <img src={SortIcon} alt="Filter Icon" />
+          <img src={FilterIcon} alt="Filter Icon" />
+        </div>
+        <TransactionList data={data.transactions} listLength={10} />
+      </section>
+    </main>
+  );
+}
+
+export default TransactionsPage;

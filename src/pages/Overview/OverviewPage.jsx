@@ -1,15 +1,14 @@
-import data from "../../data/data.json";
 import { formatCurrency } from "../../utils/format";
 import PotIcon from "../../assets/images/icon-pot.svg";
 import CaretRightIcon from "../../assets/images/icon-caret-right.svg";
-import TransactionItem from "./TransactionItem";
+import TransactionList from "../Transactions/TransactionList";
 import StatCard from "./StatCard";
 import SectionCard from "./SectionCard";
 import SummaryGrid from "./SummaryGrid";
 import DoughnutChart from "./DoughnutChart";
 import BillCard from "./BillCard";
 
-export default function OverviewPage() {
+export default function OverviewPage({ data }) {
   const balances = data.balances;
   const pots = data.pots;
   const budgets = data.budgets;
@@ -21,7 +20,7 @@ export default function OverviewPage() {
   ];
 
   return (
-    <main className="mx-200 mt-300 mb-20">
+    <main>
       <h1 className="text-heading mb-400">Overview</h1>
       {/* Stat Cards */}
       <div className="mb-400 flex flex-col gap-150 sm:flex-row sm:gap-300">
@@ -58,9 +57,7 @@ export default function OverviewPage() {
         icon={CaretRightIcon}
         path="/transactions"
       >
-        {transactions.slice(0, 5).map((transaction) => (
-          <TransactionItem key={transaction.name} {...transaction} />
-        ))}
+        <TransactionList data={transactions} />
       </SectionCard>
       {/* Budgets */}
       <SectionCard
