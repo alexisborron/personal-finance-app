@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import data from "./data/data.json";
+import ScrollToTop from "./components/ScrollToTop";
 import Sidebar from "./components/Sidebar";
 import OverviewPage from "./pages/Overview/OverviewPage";
 import PotsPage from "./pages/PotsPage";
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Sidebar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<OverviewPage data={data} />} />
         <Route path="/pots" element={<PotsPage />} />
