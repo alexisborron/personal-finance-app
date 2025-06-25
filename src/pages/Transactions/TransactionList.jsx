@@ -1,9 +1,9 @@
 import TransactionItem from "../../components/TransactionItem";
 
-export default function TransactionList({ data, listLength = 5 }) {
+export default function TransactionList({ data }) {
   return (
     <ul>
-      {data.slice(0, listLength).map((transaction) => (
+      {data.map((transaction) => (
         <TransactionItem key={transaction.name} {...transaction} />
       ))}
     </ul>

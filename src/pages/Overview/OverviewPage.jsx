@@ -57,7 +57,7 @@ export default function OverviewPage({ data }) {
         icon={CaretRightIcon}
         path="/transactions"
       >
-        <TransactionList data={transactions} />
+        <TransactionList data={transactions.slice(0, 5)} />
       </SectionCard>
       {/* Budgets */}
       <SectionCard

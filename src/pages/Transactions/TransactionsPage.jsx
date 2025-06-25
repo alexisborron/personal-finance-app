@@ -1,7 +1,7 @@
 import SearchIcon from "../../assets/images/icon-search.svg";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
 import SortIcon from "../../assets/images/icon-sort-mobile.svg";
-import TransactionList from "./TransactionList";
+import PaginatedTransactionList from "./PaginatedTransactionList";
 
 function TransactionsPage({ data }) {
   return (
@@ -23,7 +23,7 @@ function TransactionsPage({ data }) {
           <img src={SortIcon} alt="Filter Icon" />
           <img src={FilterIcon} alt="Filter Icon" />
         </div>
-        <TransactionList data={data.transactions} listLength={10} />
+        <PaginatedTransactionList itemsPerPage={10} items={data.transactions} />
       </section>
     </main>
   );
