@@ -1,9 +1,18 @@
 import { formatTransaction, formatDate } from "../utils/format";
 
-export default function TransactionItem({ avatar, name, amount, date }) {
+export default function TransactionItem({
+  isLastItem,
+  avatar,
+  name,
+  amount,
+  date,
+}) {
   return (
     <li>
-      <article className="border-grey-100 border-b-1 py-200" key={name}>
+      <article
+        className={`${isLastItem ? "" : "border-grey-100 border-b"} py-200`}
+        key={name}
+      >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-200">
             <img className="h-10 w-10 rounded-full" src={avatar} alt={name} />

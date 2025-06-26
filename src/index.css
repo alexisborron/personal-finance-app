@@ -91,3 +91,7 @@ body {
   font-size: 0.875rem;
   line-height: 1.5;
 }
+
+.pagination-button {
+  @apply flex h-[40px] w-[40px] items-center justify-center rounded-lg border;
+}

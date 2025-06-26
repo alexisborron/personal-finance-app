@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import TransactionList from "./TransactionList";
+import CaretRightIcon from "../../assets/images/icon-caret-right.svg";
+import CaretLeftIcon from "../../assets/images/icon-caret-left.svg";
+import PaginationButton from "./PaginationButton";
 
 export default function PaginatedTransactionList({ itemsPerPage, items }) {
-  const [itemOffset, setItemOffset] = useState(0);
+  const [startIndex, setstartIndex] = useState(0);
 
-  const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = items.slice(startIndex, endIndex);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
-    setItemOffset(newOffset);
+    setstartIndex(newOffset);
   };
 
   useEffect(() => {
@@ -21,23 +23,27 @@ export default function PaginatedTransactionList({ itemsPerPage, items }) {
       top: 0,
       behavior: "instant",
     });
-  }, [itemOffset]);
+  }, [startIndex]);
 
   return (
     <>
-      <TransactionList data={currentItems} itemsPerPage={10} />
+      <TransactionList
+        data={currentItems}
+        itemsPerPage={itemsPerPage}
+        hideLastBorder={true}
+      />
       <ReactPaginate
         breakLabel="..."
-        nextLabel=">"
+        nextLabel={<PaginationButton icon={CaretRightIcon} />}
         onPageChange={handlePageClick}
         pageRangeDisplayed={1}
         marginPagesDisplayed={1}
         pageCount={pageCount}
-        previousLabel="<"
-        containerClassName="flex justify-center gap-2 mt-4"
-        pageLinkClassName="px-3 py-1 border rounded"
-        activeLinkClassName="bg-grey-900 text-white"
-        breakClassName="px-3 py-1"
+        previousLabel={<PaginationButton icon={CaretLeftIcon} />}
+        containerClassName="flex justify-center items-center gap-2 mt-300"
+        pageLinkClassName="pagination-button border-beige-500"
+        activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
+        breakClassName="pagination-button"
         renderOnZeroPageCount={null}
       />
     </>
