@@ -5,7 +5,7 @@ export default function TransactionList({ data, hideLastBorder = false }) {
     <ul>
       {data.map((transaction, index) => (
         <TransactionItem
-          key={transaction.name}
+          key={`${transaction.name}-${index}`}
           {...transaction}
           isLastItem={hideLastBorder && index === data.length - 1}
         />

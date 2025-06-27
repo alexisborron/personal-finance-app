@@ -43,7 +43,7 @@ export default function PaginatedTransactionList({ itemsPerPage, items }) {
         containerClassName="flex justify-center items-center gap-2 mt-300"
         pageLinkClassName="pagination-button border-beige-500"
         activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
-        breakClassName="pagination-button"
+        breakClassName="pagination-button border-beige-500"
         renderOnZeroPageCount={null}
       />
     </>
