@@ -6,7 +6,7 @@ import CaretLeftIcon from "../../assets/images/icon-caret-left.svg";
 import PaginationButton from "./PaginationButton";
 
 export default function PaginatedTransactionList({ itemsPerPage, items }) {
-  const [startIndex, setstartIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
 
   const endIndex = startIndex + itemsPerPage;
   const currentItems = items.slice(startIndex, endIndex);
@@ -14,8 +14,8 @@ export default function PaginatedTransactionList({ itemsPerPage, items }) {
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    setstartIndex(newOffset);
+    const newStartIndex = (event.selected * itemsPerPage) % items.length;
+    setStartIndex(newStartIndex);
   };
 
   useEffect(() => {
