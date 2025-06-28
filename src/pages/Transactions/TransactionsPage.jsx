@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import SearchIcon from "../../assets/images/icon-search.svg";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
 import SortIcon from "../../assets/images/icon-sort-mobile.svg";
@@ -6,15 +6,49 @@ import PaginatedTransactionList from "./PaginatedTransactionList";
 
 function TransactionsPage({ data }) {
   const [searchText, setSearchText] = useState("");
-  const searchHandler = (e) => {
-    setSearchText(e.target.value.toLowerCase());
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentFilteredTransactions, setCurrentFilteredTransactions] =
+    useState(data.transactions);
+
+  const pageBeforeSearchRef = useRef(0);
+  const isSearchingActiveRef = useRef(false);
+
+  const searchHandler = (event) => {
+    setSearchText(event.target.value.toLowerCase());
   };
-  const filteredTransactions =
-    searchText.trim() === ""
-      ? data.transactions
-      : data.transactions.filter((transaction) => {
-          return transaction.name.toLowerCase().includes(searchText);
-        });
+
+  useEffect(() => {
+    const wasSearchingActive = isSearchingActiveRef.current;
+    isSearchingActiveRef.current = searchText.trim() !== "";
+
+    const newFilteredTransactions =
+      searchText.trim() === ""
+        ? data.transactions
+        : data.transactions.filter((transaction) => {
+            return transaction.name.toLowerCase().includes(searchText);
+          });
+    setCurrentFilteredTransactions(newFilteredTransactions);
+
+    if (isSearchingActiveRef.current && !wasSearchingActive) {
+      pageBeforeSearchRef.current = currentPage;
+      setCurrentPage(0);
+    } else if (!isSearchingActiveRef.current && wasSearchingActive) {
+      // Retrieve the page you saved from before you started searching
+      let restoredPage = pageBeforeSearchRef.current;
+      setCurrentPage(restoredPage);
+    }
+  }, [searchText, data.transactions, currentPage]);
+
+  useEffect(() => {
+    if (!isSearchingActiveRef.current) {
+      pageBeforeSearchRef.current = currentPage;
+    }
+  }, [currentPage]);
+
+  const handlePaginationClick = (selectedPage) => {
+    setCurrentPage(selectedPage);
+  };
+
   return (
     <main>
       <h1 className="text-heading mb-400">Transactions</h1>
@@ -39,7 +73,9 @@ function TransactionsPage({ data }) {
         </div>
         <PaginatedTransactionList
           itemsPerPage={10}
-          items={filteredTransactions}
+          items={currentFilteredTransactions}
+          onPageChange={handlePaginationClick}
+          initialPage={currentPage}
         />
       </section>
     </main>
