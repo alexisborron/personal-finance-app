@@ -1,55 +1,50 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-function filterTransactions(transactions, searchText) {
+function applyFilters(transactions, searchText, selectedCategory) {
+  let filtered = transactions;
+
+  if (selectedCategory !== "All Categories") {
+    filtered = filtered.filter((t) => t.category === selectedCategory);
+  }
+
   const search = searchText.trim().toLowerCase();
-  if (search === "") {
-    return transactions;
-  } else {
-    return transactions.filter((transaction) =>
-      transaction.name.toLowerCase().includes(search),
+  if (search !== "") {
+    filtered = filtered.filter(
+      (transaction) =>
+        transaction.name.toLowerCase().includes(search) ||
+        transaction.category.toLowerCase().includes(search),
     );
   }
+
+  return filtered;
 }
 
 export default function useTransactionSearch(allTransactions) {
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [filteredTransactions, setFilteredTransactions] =
-    useState(allTransactions);
-
-  const pageBeforeSearchRef = useRef(0);
-  const isSearchingRef = useRef(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   useEffect(() => {
-    const newIsSearching = searchText.trim() !== "";
-    const wasSearching = isSearchingRef.current;
-
-    if (newIsSearching && !wasSearching) {
-      // Started searching
-      pageBeforeSearchRef.current = currentPage; // Save current page
-      setCurrentPage(0); // Go to first page of search results
-    } else if (!newIsSearching && wasSearching) {
-      // Stopped searching (cleared search)
-      setCurrentPage(pageBeforeSearchRef.current); // Restore saved page
-    }
-
-    isSearchingRef.current = newIsSearching; // Keep track of current search state for next render
-
-    setFilteredTransactions(filterTransactions(allTransactions, searchText));
-  }, [searchText, allTransactions, currentPage]);
-
-  useEffect(() => {
-    if (!isSearchingRef.current) {
-      pageBeforeSearchRef.current = currentPage;
-    }
-  }, [currentPage]);
+    const newFiltered = applyFilters(
+      allTransactions,
+      searchText,
+      selectedCategory,
+    );
+    setFilteredTransactions(newFiltered);
+    setCurrentPage(0);
+  }, [searchText, selectedCategory, allTransactions]);
 
   const handleSearchChange = (event) => {
-    setSearchText(event.target.value.toLowerCase());
+    setSearchText(event.target.value);
   };
 
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage);
+  };
+
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category);
   };
 
   return {
@@ -58,5 +53,6 @@ export default function useTransactionSearch(allTransactions) {
     currentPage,
     handlePageChange,
     filteredTransactions,
+    handleSelectedCategory,
   };
 }

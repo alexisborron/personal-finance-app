@@ -3,6 +3,7 @@ import SearchIcon from "../../assets/images/icon-search.svg";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
 import SortIcon from "../../assets/images/icon-sort-mobile.svg";
 import PaginatedTransactionList from "./PaginatedTransactionList";
+import DropdownMenu from "../../components/DropdownMenu";
 
 export default function TransactionsPage({ data }) {
   const {
@@ -11,7 +12,22 @@ export default function TransactionsPage({ data }) {
     currentPage,
     handlePageChange,
     filteredTransactions,
+    handleSelectedCategory,
   } = useTransactionSearch(data.transactions);
+
+  const sortOptions = [
+    "Latest",
+    "Oldest",
+    "A to Z",
+    "Z to A",
+    "Highest",
+    "Lowest",
+  ];
+
+  const filterCategories = [
+    "All Categories",
+    ...Array.from(new Set(data.transactions.map((t) => t.category))),
+  ];
 
   return (
     <main>
@@ -32,8 +48,24 @@ export default function TransactionsPage({ data }) {
               placeholder="Search transactions..."
             ></input>
           </div>
-          <img src={SortIcon} alt="Sort Icon" />
-          <img src={FilterIcon} alt="Filter Icon" />
+
+          <DropdownMenu
+            buttonId={"sort-button"}
+            menuId={"sort-menu"}
+            menuItems={sortOptions}
+            menuTitle="Sort By"
+            icon={SortIcon}
+            iconAltText={"Sort"}
+          />
+          <DropdownMenu
+            buttonId={"filter-button"}
+            menuId={"filter-menu"}
+            menuItems={filterCategories}
+            menuTitle="Category"
+            icon={FilterIcon}
+            iconAltText={"Filter"}
+            handleSelectedCategory={handleSelectedCategory}
+          />
         </div>
         <PaginatedTransactionList
           itemsPerPage={10}

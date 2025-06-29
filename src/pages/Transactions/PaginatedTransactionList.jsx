@@ -19,11 +19,10 @@ export default function PaginatedTransactionList({
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   const handlePageClick = (event) => {
-    setCurrentPage(event.selected); // Update internal UI
-    onPageChange(event.selected); // Tell parent which page was clicked
+    setCurrentPage(event.selected);
+    onPageChange(event.selected);
   };
 
-  // Update startIndex when currentPage or items change
   useEffect(() => {
     const newStartIndex = (currentPage * itemsPerPage) % items.length;
     setStartIndex(newStartIndex);
@@ -58,7 +57,7 @@ export default function PaginatedTransactionList({
         containerClassName="flex justify-center items-center gap-2 mt-300"
         pageLinkClassName="pagination-button border-beige-500"
         activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
-        breakClassName="pagination-button border-beige-500"
+        breakClassName="pagination-button pointer-events-none border-beige-500"
         renderOnZeroPageCount={null}
         forcePage={currentPage}
       />
