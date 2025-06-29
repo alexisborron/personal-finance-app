@@ -39,6 +39,17 @@ export default function PaginatedTransactionList({
     });
   }, [startIndex]);
 
+  // Range set to match Frontend Mentor Figma design
+  const dynamicPageRangeDisplayed =
+    currentPage === pageCount - 3 || currentPage === pageCount - 1
+      ? 2
+      : pageCount > 5
+        ? 2
+        : 1;
+
+  const dynamicMarginPagesDisplayed =
+    currentPage === pageCount - 3 || pageCount > 5 ? 0 : 1;
+
   return (
     <>
       <TransactionList
@@ -50,14 +61,14 @@ export default function PaginatedTransactionList({
         breakLabel="..."
         nextLabel={<PaginationButton icon={CaretRightIcon} />}
         onPageChange={handlePageClick}
-        pageRangeDisplayed={1}
-        marginPagesDisplayed={1}
+        pageRangeDisplayed={dynamicPageRangeDisplayed}
+        marginPagesDisplayed={dynamicMarginPagesDisplayed}
         pageCount={pageCount}
         previousLabel={<PaginationButton icon={CaretLeftIcon} />}
         containerClassName="flex justify-center items-center gap-2 mt-300"
         pageLinkClassName="pagination-button border-beige-500"
         activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
-        breakClassName="pagination-button pointer-events-none border-beige-500"
+        breakClassName="pointer-events-none flex h-[40px] w-[40px] items-center justify-center"
         renderOnZeroPageCount={null}
         forcePage={currentPage}
       />
