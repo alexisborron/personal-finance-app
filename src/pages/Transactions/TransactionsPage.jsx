@@ -13,6 +13,7 @@ export default function TransactionsPage({ data }) {
     handlePageChange,
     filteredTransactions,
     handleSelectedCategory,
+    selectedCategory,
   } = useTransactionSearch(data.transactions);
 
   const sortOptions = [
@@ -33,7 +34,7 @@ export default function TransactionsPage({ data }) {
     <main>
       <h1 className="text-heading mb-400">Transactions</h1>
       <section className="card-base bg-white py-250 sm:py-400">
-        <div className="mb-50 flex items-center gap-250">
+        <div className="relative mb-50 flex items-center gap-250">
           <div className="relative flex flex-1 items-center">
             <img
               src={SearchIcon}
@@ -48,7 +49,6 @@ export default function TransactionsPage({ data }) {
               placeholder="Search transactions..."
             ></input>
           </div>
-
           <DropdownMenu
             buttonId={"sort-button"}
             menuId={"sort-menu"}
@@ -65,6 +65,7 @@ export default function TransactionsPage({ data }) {
             icon={FilterIcon}
             iconAltText={"Filter"}
             handleSelectedCategory={handleSelectedCategory}
+            selectedCategory={selectedCategory}
           />
         </div>
         <PaginatedTransactionList

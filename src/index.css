@@ -39,6 +39,11 @@
   --spacing-150: 0.75rem; /* 12px */
   --spacing-100: 0.5rem; /* 8px */
   --spacing-50: 0.25rem; /* 4px */
+
+  /* BOX SHADOW */
+  --shadow-3xl:
+    0px -5px 15px rgba(0, 0, 0, 0.1), 0 0px 10px rgba(0, 0, 0, 0.025),
+    0 20px 20px rgba(0, 0, 0, 0.1);
 }
 
 :root {
@@ -56,6 +61,7 @@ body {
   letter-spacing: 0px;
   font-weight: 400;
   background: var(--color-beige-100);
+  color: var(--color-grey-900);
 }
 
 /* UTILITIES */

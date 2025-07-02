@@ -54,5 +54,6 @@ export default function useTransactionSearch(allTransactions) {
     handlePageChange,
     filteredTransactions,
     handleSelectedCategory,
+    selectedCategory,
   };
 }
