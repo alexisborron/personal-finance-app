@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import useTransactionSearch from "../../hooks/useTransactionSearch";
 import SearchIcon from "../../assets/images/icon-search.svg";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
@@ -14,7 +15,19 @@ export default function TransactionsPage({ data }) {
     filteredTransactions,
     handleSelectedCategory,
     selectedCategory,
+    handleSortChange,
+    sortOption,
   } = useTransactionSearch(data.transactions);
+
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const handleMenuChange = (menuName, isOpen) => {
+    if (isOpen) {
+      setOpenMenu(menuName);
+    } else {
+      setOpenMenu(null);
+    }
+  };
 
   const sortOptions = [
     "Latest",
@@ -29,6 +42,10 @@ export default function TransactionsPage({ data }) {
     "All Categories",
     ...Array.from(new Set(data.transactions.map((t) => t.category))),
   ];
+
+  useEffect(() => {
+    setOpenMenu(null);
+  }, [sortOption, selectedCategory]);
 
   return (
     <main>
@@ -56,6 +73,10 @@ export default function TransactionsPage({ data }) {
             menuTitle="Sort By"
             icon={SortIcon}
             iconAltText={"Sort"}
+            handleSortChange={handleSortChange}
+            selectedSortOption={sortOption}
+            isOpen={openMenu === "sort"}
+            onToggle={(isOpen) => handleMenuChange("sort", isOpen)}
           />
           <DropdownMenu
             buttonId={"filter-button"}
@@ -66,6 +87,8 @@ export default function TransactionsPage({ data }) {
             iconAltText={"Filter"}
             handleSelectedCategory={handleSelectedCategory}
             selectedCategory={selectedCategory}
+            isOpen={openMenu === "filter"}
+            onToggle={(isOpen) => handleMenuChange("filter", isOpen)}
           />
         </div>
         <PaginatedTransactionList

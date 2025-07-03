@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function DropdownMenu({
   buttonId,
   menuId,
@@ -9,18 +7,22 @@ export default function DropdownMenu({
   iconAltText,
   handleSelectedCategory,
   selectedCategory,
+  handleSortChange,
+  selectedSortOption,
+  isOpen,
+  onToggle,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    onToggle(!isOpen);
   };
 
   const handleItemClick = (item) => {
     if (handleSelectedCategory) {
       handleSelectedCategory(item);
     }
-    setIsOpen(false);
+    if (handleSortChange) {
+      handleSortChange(item);
+    }
   };
 
   return (
@@ -49,7 +51,9 @@ export default function DropdownMenu({
           </p>
           {menuItems.map((item, index) => (
             <li
-              className={`${item === selectedCategory ? "font-bold" : ""} ${index === menuItems.length - 1 ? "" : "border-grey-100 border-b"} py-150`}
+              className={`${item === selectedCategory || item === selectedSortOption ? "font-bold" : ""} ${
+                index === menuItems.length - 1 ? "" : "border-grey-100 border-b"
+              } py-150`}
               key={`${item}-${index}`}
               role="menuitem"
               tabIndex={0}

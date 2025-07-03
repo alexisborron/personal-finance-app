@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function applyFilters(transactions, searchText, selectedCategory) {
+function applyFilters(transactions, searchText, selectedCategory, sortOption) {
   let filtered = transactions;
 
   if (selectedCategory !== "All Categories") {
@@ -16,6 +16,28 @@ function applyFilters(transactions, searchText, selectedCategory) {
     );
   }
 
+  switch (sortOption) {
+    case "Latest":
+      filtered = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
+      break;
+    case "Oldest":
+      filtered = [...filtered].sort((a, b) => a.date.localeCompare(b.date));
+      break;
+    case "A to Z":
+      filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "Z to A":
+      filtered = [...filtered].sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "Highest":
+      filtered = [...filtered].sort((a, b) => b.amount - a.amount);
+      break;
+    case "Lowest":
+      filtered = [...filtered].sort((a, b) => a.amount - b.amount);
+      break;
+    default:
+      break;
+  }
   return filtered;
 }
 
@@ -24,16 +46,18 @@ export default function useTransactionSearch(allTransactions) {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [filteredTransactions, setFilteredTransactions] = useState([]);
+  const [sortOption, setSortOption] = useState("Latest");
 
   useEffect(() => {
     const newFiltered = applyFilters(
       allTransactions,
       searchText,
       selectedCategory,
+      sortOption,
     );
     setFilteredTransactions(newFiltered);
     setCurrentPage(0);
-  }, [searchText, selectedCategory, allTransactions]);
+  }, [searchText, selectedCategory, sortOption, allTransactions]);
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
@@ -47,6 +71,10 @@ export default function useTransactionSearch(allTransactions) {
     setSelectedCategory(category);
   };
 
+  const handleSortChange = (newSortOption) => {
+    setSortOption(newSortOption);
+  };
+
   return {
     searchText,
     handleSearchChange,
@@ -55,5 +83,7 @@ export default function useTransactionSearch(allTransactions) {
     filteredTransactions,
     handleSelectedCategory,
     selectedCategory,
+    handleSortChange,
+    sortOption,
   };
 }
