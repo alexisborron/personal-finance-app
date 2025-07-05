@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function applyFilters(transactions, searchText, selectedCategory, sortOption) {
   let filtered = transactions;
 
-  if (selectedCategory !== "All Categories") {
+  if (selectedCategory !== "All Transactions") {
     filtered = filtered.filter((t) => t.category === selectedCategory);
   }
 
@@ -44,7 +44,7 @@ function applyFilters(transactions, searchText, selectedCategory, sortOption) {
 export default function useTransactionSearch(allTransactions) {
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [selectedCategory, setSelectedCategory] = useState("All Transactions");
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [sortOption, setSortOption] = useState("Latest");
 

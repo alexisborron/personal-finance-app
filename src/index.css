@@ -81,6 +81,7 @@ body {
   font-size: 2rem;
   line-height: 1.2;
   font-weight: bold;
+  margin-block: var(--spacing-100);
 }
 
 .card-base {
@@ -98,6 +99,70 @@ body {
   line-height: 1.5;
 }
 
+/* BUTTONS */
 .pagination-button {
   @apply flex h-[40px] w-[40px] items-center justify-center rounded-lg border;
+}
+
+.primary-button {
+  @apply bg-grey-900 text-white;
+}
+
+.primary-button:hover {
+  @apply bg-grey-500;
+}
+
+.secondary-button {
+  @apply bg-beige-100 text-grey-900;
+}
+
+.secondary-button:hover {
+  @apply border-grey-900 border bg-white;
+}
+
+/* PROGRESS BAR */
+.progress-track::-webkit-progress-bar {
+  @apply bg-beige-100 rounded-full;
+}
+
+.progress-green {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-green rounded-full;
+  }
+}
+
+.progress-cyan {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-cyan rounded-full;
+  }
+}
+
+.progress-yellow {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-yellow rounded-full;
+  }
+}
+
+.progress-navy {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-navy rounded-full;
+  }
+}
+
+.progress-purple {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-purple rounded-full;
+  }
+}
+
+.progress-red {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-red rounded-full;
+  }
 }

@@ -39,7 +39,7 @@ export default function TransactionsPage({ data }) {
   ];
 
   const filterCategories = [
-    "All Categories",
+    "All Transactions",
     ...Array.from(new Set(data.transactions.map((t) => t.category))),
   ];
 
@@ -49,8 +49,8 @@ export default function TransactionsPage({ data }) {
 
   return (
     <main>
-      <h1 className="text-heading mb-400">Transactions</h1>
-      <section className="card-base bg-white py-250 sm:py-400">
+      <h1 className="text-heading">Transactions</h1>
+      <section className="card-base mt-400 bg-white py-250 sm:py-400">
         <div className="relative mb-50 flex items-center gap-250">
           <div className="relative flex flex-1 items-center">
             <img
@@ -72,9 +72,9 @@ export default function TransactionsPage({ data }) {
             menuItems={sortOptions}
             menuTitle="Sort By"
             icon={SortIcon}
-            iconAltText={"Sort"}
-            handleSortChange={handleSortChange}
-            selectedSortOption={sortOption}
+            ariaLabel="Open Sort Options Menu"
+            handleSelection={handleSortChange}
+            selectedItem={sortOption}
             isOpen={openMenu === "sort"}
             onToggle={(isOpen) => handleMenuChange("sort", isOpen)}
           />
@@ -84,9 +84,9 @@ export default function TransactionsPage({ data }) {
             menuItems={filterCategories}
             menuTitle="Category"
             icon={FilterIcon}
-            iconAltText={"Filter"}
-            handleSelectedCategory={handleSelectedCategory}
-            selectedCategory={selectedCategory}
+            ariaLabel="Open Filter Categories Menu"
+            handleSelection={handleSelectedCategory}
+            selectedItem={selectedCategory}
             isOpen={openMenu === "filter"}
             onToggle={(isOpen) => handleMenuChange("filter", isOpen)}
           />
