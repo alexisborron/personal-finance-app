@@ -7,7 +7,7 @@ export default function SummaryGrid({ items, labelKey, amountKey }) {
       {items.slice(0, 4).map((item) => (
         <SummaryItem
           key={item[labelKey]}
-          colorClass={item["theme"]}
+          colorClass={`bg-${item["theme"]}`}
           label={item[labelKey]}
           amount={formatCurrency(item[amountKey])}
         />

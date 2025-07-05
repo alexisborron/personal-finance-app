@@ -402,22 +402,22 @@
     {
       "category": "Entertainment",
       "maximum": 50.0,
-      "theme": "bg-green"
+      "theme": "green"
     },
     {
       "category": "Bills",
       "maximum": 750.0,
-      "theme": "bg-cyan"
+      "theme": "cyan"
     },
     {
       "category": "Dining Out",
       "maximum": 75.0,
-      "theme": "bg-yellow"
+      "theme": "yellow"
     },
     {
       "category": "Personal Care",
       "maximum": 100.0,
-      "theme": "bg-navy"
+      "theme": "navy"
     }
   ],
   "pots": [
