@@ -1,11 +1,11 @@
 import { formatCurrency } from "../../utils/format";
 import PotIcon from "../../assets/images/icon-pot.svg";
 import CaretRightIcon from "../../assets/images/icon-caret-right.svg";
-import TransactionList from "../Transactions/TransactionList";
+import TransactionList from "../../components/TransactionList";
 import StatCard from "./StatCard";
 import SectionCard from "../../components/SectionCard";
 import SummaryGrid from "./SummaryGrid";
-import DoughnutChart from "./DoughnutChart";
+import DoughnutChart from "../../components/DoughnutChart";
 import BillCard from "./BillCard";
 import OverviewCardHeader from "./OverviewCardHeader";
 
@@ -71,7 +71,11 @@ export default function OverviewPage({ data }) {
           icon={CaretRightIcon}
           path="/budgets"
         />
-        <DoughnutChart items={budgets} transactions={transactions} />
+        <DoughnutChart
+          classes="my-250"
+          items={budgets}
+          transactions={transactions}
+        />
         <SummaryGrid items={budgets} labelKey="category" amountKey="maximum" />
       </SectionCard>
       {/* Bills */}

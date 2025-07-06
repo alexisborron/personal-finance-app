@@ -120,9 +120,9 @@ body {
   @apply border-grey-900 border bg-white;
 }
 
-/* PROGRESS BAR */
+/* POT PROGRESS BAR */
 .progress-track::-webkit-progress-bar {
-  @apply bg-beige-100 rounded-full;
+  @apply bg-beige-100 w-full rounded-full;
 }
 
 .progress-green {
@@ -164,5 +164,52 @@ body {
   &::-webkit-progress-value,
   &::-moz-progress-bar {
     @apply bg-red rounded-full;
+  }
+}
+
+/* BUDGET PROGRESS BAR */
+.budget-progress-track::-webkit-progress-bar {
+  @apply bg-beige-100 w-full rounded-sm p-1;
+}
+
+.budget-progress-green {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-green rounded-sm;
+  }
+}
+
+.budget-progress-cyan {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-cyan rounded-sm;
+  }
+}
+
+.budget-progress-yellow {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-yellow rounded-sm;
+  }
+}
+
+.budget-progress-navy {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-navy rounded-sm;
+  }
+}
+
+.budget-progress-purple {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-purple rounded-sm;
+  }
+}
+
+.budget-progress-red {
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    @apply bg-red rounded-sm;
   }
 }

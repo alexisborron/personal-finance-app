@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import useTransactionSearch from "../../hooks/useTransactionSearch";
 import SearchIcon from "../../assets/images/icon-search.svg";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
@@ -7,6 +8,9 @@ import PaginatedTransactionList from "./PaginatedTransactionList";
 import DropdownMenu from "../../components/DropdownMenu";
 
 export default function TransactionsPage({ data }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const categoryFromURL = searchParams.get("category");
   const {
     searchText,
     handleSearchChange,
@@ -17,7 +21,7 @@ export default function TransactionsPage({ data }) {
     selectedCategory,
     handleSortChange,
     sortOption,
-  } = useTransactionSearch(data.transactions);
+  } = useTransactionSearch(data.transactions, categoryFromURL);
 
   const [openMenu, setOpenMenu] = useState(null);
 
@@ -26,6 +30,17 @@ export default function TransactionsPage({ data }) {
       setOpenMenu(menuName);
     } else {
       setOpenMenu(null);
+    }
+  };
+
+  const handleCategoryChange = (category) => {
+    handleSelectedCategory(category);
+
+    // Update the URL query param
+    if (category === "All Transactions") {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category });
     }
   };
 
@@ -85,7 +100,7 @@ export default function TransactionsPage({ data }) {
             menuTitle="Category"
             icon={FilterIcon}
             ariaLabel="Open Filter Categories Menu"
-            handleSelection={handleSelectedCategory}
+            handleSelection={handleCategoryChange}
             selectedItem={selectedCategory}
             isOpen={openMenu === "filter"}
             onToggle={(isOpen) => handleMenuChange("filter", isOpen)}

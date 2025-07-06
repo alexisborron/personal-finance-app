@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import OverviewPage from "./pages/Overview/OverviewPage";
 import PotsPage from "./pages/Savings/PotsPage";
 import TransactionsPage from "./pages/Transactions/TransactionsPage";
-import BudgetsPage from "./pages/BudgetsPage";
+import BudgetsPage from "./pages/Budgets/BudgetsPage";
 import BillsPage from "./pages/BillsPage";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           path="/transactions"
           element={<TransactionsPage data={data} />}
         />
-        <Route path="/budgets" element={<BudgetsPage />} />
+        <Route path="/budgets" element={<BudgetsPage data={data} />} />
         <Route path="/bills" element={<BillsPage />} />
       </Routes>
     </>

@@ -16,7 +16,7 @@ const INNER_COLORS = [
   "hsla(248, 8%, 41%, 0.75)",
 ];
 
-export default function DoughnutChart({ items = [] }) {
+export default function DoughnutChart({ items = [], classes = "" }) {
   const dataValues = items.map((item) => item.maximum);
   const dataLabels = items.map((item) => item.category);
 
@@ -45,7 +45,7 @@ export default function DoughnutChart({ items = [] }) {
   };
 
   return (
-    <div className="relative mx-auto mb-250 h-[240px] w-[240px]">
+    <div className={`${classes} relative mx-auto h-[240px] w-[240px]`}>
       <Doughnut
         data={data}
         options={{

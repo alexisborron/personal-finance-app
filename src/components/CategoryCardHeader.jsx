@@ -2,22 +2,27 @@ import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import EllipsisIcon from "../assets/images/icon-ellipsis.svg";
 
-export default function CategoryCardHeader({ name, theme }) {
+export default function CategoryCardHeader({
+  headingText,
+  theme,
+  menuItems,
+  ariaLabelText,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="mb-400 flex items-center justify-between">
+    <div className="mb-250 flex items-center justify-between">
       <div>
         <div
-          className={`bg-${theme} mr-200 inline-block h-200 w-200 rounded-full`}
+          className={`${theme} mr-200 inline-block h-200 w-200 rounded-full`}
         ></div>
-        <h2 className="text-heading-secondary inline-block">{name}</h2>
+        <h2 className="text-heading-secondary inline-block">{headingText}</h2>
       </div>
       <DropdownMenu
         buttonId="edit-button"
         menuId={"edit-menu"}
-        menuItems={["Edit Pot", "Delete Pot"]}
+        menuItems={menuItems}
         icon={EllipsisIcon}
-        ariaLabel="Open Edit Pot Menu"
+        ariaLabel={ariaLabelText}
         isOpen={isOpen}
         onToggle={() => setIsOpen((prev) => !prev)}
         hasDeleteAction={true}

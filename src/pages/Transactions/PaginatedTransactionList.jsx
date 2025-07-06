@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import TransactionList from "./TransactionList";
+import TransactionList from "../../components/TransactionList";
 import CaretRightIcon from "../../assets/images/icon-caret-right.svg";
 import CaretLeftIcon from "../../assets/images/icon-caret-left.svg";
 import PaginationButton from "./PaginationButton";
@@ -50,28 +50,27 @@ export default function PaginatedTransactionList({
   const dynamicMarginPagesDisplayed =
     currentPage === pageCount - 3 || pageCount > 5 ? 0 : 1;
 
+  console.log(currentPage);
   return (
     <>
-      <TransactionList
-        data={currentItems}
-        itemsPerPage={itemsPerPage}
-        hideLastBorder={true}
-      />
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel={<PaginationButton icon={CaretRightIcon} />}
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={dynamicPageRangeDisplayed}
-        marginPagesDisplayed={dynamicMarginPagesDisplayed}
-        pageCount={pageCount}
-        previousLabel={<PaginationButton icon={CaretLeftIcon} />}
-        containerClassName="flex justify-center items-center gap-2 mt-300"
-        pageLinkClassName="pagination-button border-beige-500"
-        activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
-        breakClassName="pointer-events-none flex h-[40px] w-[40px] items-center justify-center"
-        renderOnZeroPageCount={null}
-        forcePage={currentPage}
-      />
+      <TransactionList data={currentItems} itemsPerPage={itemsPerPage} />
+      {pageCount > 0 && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel={<PaginationButton icon={CaretRightIcon} />}
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={dynamicPageRangeDisplayed}
+          marginPagesDisplayed={dynamicMarginPagesDisplayed}
+          pageCount={pageCount}
+          previousLabel={<PaginationButton icon={CaretLeftIcon} />}
+          containerClassName="flex justify-center items-center gap-2 mt-300"
+          pageLinkClassName="pagination-button border-beige-500"
+          activeLinkClassName="bg-grey-900 border-grey-900 border text-white"
+          breakClassName="pointer-events-none flex h-[40px] w-[40px] items-center justify-center"
+          renderOnZeroPageCount={null}
+          forcePage={currentPage}
+        />
+      )}
     </>
   );
 }

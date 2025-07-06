@@ -41,10 +41,12 @@ function applyFilters(transactions, searchText, selectedCategory, sortOption) {
   return filtered;
 }
 
-export default function useTransactionSearch(allTransactions) {
+export default function useTransactionSearch(allTransactions, initialCategory) {
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("All Transactions");
+  const [selectedCategory, setSelectedCategory] = useState(
+    initialCategory ?? "All Transactions",
+  );
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [sortOption, setSortOption] = useState("Latest");
 

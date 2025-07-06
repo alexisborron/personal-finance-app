@@ -1,5 +1,4 @@
-import { formatCurrency } from "../../utils/format";
-import SummaryItem from "./SummaryItem";
+import SummaryItem from "../../components/SummaryItem";
 
 export default function SummaryGrid({ items, labelKey, amountKey }) {
   return (
@@ -7,9 +6,9 @@ export default function SummaryGrid({ items, labelKey, amountKey }) {
       {items.slice(0, 4).map((item) => (
         <SummaryItem
           key={item[labelKey]}
-          colorClass={`bg-${item["theme"]}`}
+          colorClass={`${item["theme"]}`}
           label={item[labelKey]}
-          amount={formatCurrency(item[amountKey])}
+          amount={item[amountKey]}
         />
       ))}
     </div>
