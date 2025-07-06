@@ -10,7 +10,6 @@ import BillCard from "./BillCard";
 import OverviewCardHeader from "./OverviewCardHeader";
 
 export default function OverviewPage({ data }) {
-  const balances = data.balances;
   const pots = data.pots;
   const budgets = data.budgets;
   const transactions = data.transactions;
@@ -19,15 +18,34 @@ export default function OverviewPage({ data }) {
     { label: "Total Upcoming", amount: "$194.98", color: "bg-yellow" },
     { label: "Due Soon", amount: "$59.98", color: "bg-cyan" },
   ];
+  const incomeAmounts = transactions
+    .filter((t) => t.amount > 0)
+    .map((t) => t.amount);
+
+  const expenseAmounts = transactions
+    .filter((t) => t.amount < 0)
+    .map((t) => Math.abs(t.amount));
+
+  const incomeTotal = incomeAmounts.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
+
+  const expensesTotal = expenseAmounts.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
+
+  const currentBalance = incomeTotal - expensesTotal;
 
   return (
     <main>
       <h1 className="text-heading">Overview</h1>
       {/* Stat Cards */}
       <div className="mt-400 mb-400 flex flex-col gap-150 sm:flex-row sm:gap-300">
-        {balances.map((balance) => (
-          <StatCard key={balance.label} {...balance} />
-        ))}
+        <StatCard label="Current Balance" value={currentBalance} />
+        <StatCard label="Income" value={incomeTotal} />
+        <StatCard label="Expenses" value={expensesTotal} />
       </div>
       {/* Pots (refers to savings pots) */}
       <SectionCard>

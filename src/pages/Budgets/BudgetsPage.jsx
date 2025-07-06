@@ -4,21 +4,7 @@ import SectionCard from "../../components/SectionCard";
 import CategoryCardHeader from "../../components/CategoryCardHeader";
 import BudgetCardContent from "../Budgets/BudgetCardContent";
 import { formatCurrency } from "../../utils/format";
-
-function calculateBudgetSpentAndRemaining(budget, transactions) {
-  const filteredTransactions = transactions.filter(
-    (t) => t.category === budget.category,
-  );
-
-  const totalSpent = filteredTransactions.reduce(
-    (acc, t) => acc + Math.abs(t.amount),
-    0,
-  );
-
-  const remaining = budget.maximum - totalSpent;
-
-  return { totalSpent, remaining };
-}
+import { calculateBudgetSpentAndRemaining } from "../../utils/helpers";
 
 export default function BudgetsPage({ data }) {
   const budgets = data.budgets;
@@ -59,11 +45,13 @@ export default function BudgetsPage({ data }) {
                   ></div>
                   <p className="text-sm">{budget.category}</p>
                 </div>
-                <p className="text-xs">
-                  <span className="text-base font-bold">
+                <p className="flex items-center gap-100">
+                  <span className="text-grey-900 align-baseline text-base font-bold">
                     {formatCurrency(totalSpent)}
-                  </span>{" "}
-                  of {formatCurrency(budget.maximum)}
+                  </span>
+                  <span className="text-grey-500 text-xs">
+                    of {formatCurrency(budget.maximum)}
+                  </span>
                 </p>
               </li>
             );

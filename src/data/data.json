@@ -1,9 +1,4 @@
 {
-  "balances": [
-    { "label": "Current Balance", "value": 4836.0 },
-    { "label": "Income", "value": 3814.25 },
-    { "label": "Expenses", "value": 1700.5 }
-  ],
   "transactions": [
     {
       "avatar": "/assets/images/avatars/emma-richardson.jpg",

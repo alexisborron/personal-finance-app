@@ -120,96 +120,153 @@ body {
   @apply border-grey-900 border bg-white;
 }
 
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* POT PROGRESS BAR */
 .progress-track::-webkit-progress-bar {
-  @apply bg-beige-100 w-full rounded-full;
+  background-color: var(--color-beige-100);
+  width: 100%;
+  border-radius: calc(infinity * 1px);
 }
 
 .progress-green {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-green);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-green rounded-full;
+    background-color: var(--color-green);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 .progress-cyan {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-cyan);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-cyan rounded-full;
+    background-color: var(--color-cyan);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 .progress-yellow {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-yellow);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-yellow rounded-full;
+    background-color: var(--color-yellow);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 .progress-navy {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-navy);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-navy rounded-full;
+    background-color: var(--color-navy);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 .progress-purple {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-purple);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-purple rounded-full;
+    background-color: var(--color-purple);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 .progress-red {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-red);
+    border-radius: calc(infinity * 1px);
+  }
   &::-moz-progress-bar {
-    @apply bg-red rounded-full;
+    background-color: var(--color-red);
+    border-radius: calc(infinity * 1px);
   }
 }
 
 /* BUDGET PROGRESS BAR */
 .budget-progress-track::-webkit-progress-bar {
-  @apply bg-beige-100 w-full rounded-sm p-1;
+  background-color: var(--color-beige-100);
+  width: 100%;
+  border-radius: 4px;
 }
 
 .budget-progress-green {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-green);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-green rounded-sm;
+    background-color: var(--color-green);
+    border-radius: 4px;
   }
 }
 
 .budget-progress-cyan {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-cyan);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-cyan rounded-sm;
+    background-color: var(--color-cyan);
+    border-radius: 4px;
   }
 }
 
 .budget-progress-yellow {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-yellow);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-yellow rounded-sm;
+    background-color: var(--color-yellow);
+    border-radius: 4px;
   }
 }
 
 .budget-progress-navy {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-navy);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-navy rounded-sm;
+    background-color: var(--color-navy);
+    border-radius: 4px;
   }
 }
 
 .budget-progress-purple {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-purple);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-purple rounded-sm;
+    background-color: var(--color-purple);
+    border-radius: 4px;
   }
 }
 
 .budget-progress-red {
-  &::-webkit-progress-value,
+  &::-webkit-progress-value {
+    background-color: var(--color-red);
+    border-radius: 4px;
+  }
   &::-moz-progress-bar {
-    @apply bg-red rounded-sm;
+    background-color: var(--color-red);
+    border-radius: 4px;
   }
 }

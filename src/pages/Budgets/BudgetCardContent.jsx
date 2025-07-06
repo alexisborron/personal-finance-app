@@ -10,6 +10,7 @@ export default function BudgetCardContent({
   totalSpent,
   remaining,
 }) {
+  console.log("budget.theme:", budget.theme);
   const filteredLatestTransactions = transactions
     .filter((transaction) => transaction.category === budget.category)
     .sort((a, b) => b.date.localeCompare(a.date));

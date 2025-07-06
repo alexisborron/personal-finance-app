@@ -1,5 +1,7 @@
 import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { calculateBudgetSpentAndRemaining } from "../utils/helpers";
+import { formatCurrencyNoCents } from "../utils/format";
 
 ChartJS.register(ArcElement);
 
@@ -16,9 +18,26 @@ const INNER_COLORS = [
   "hsla(248, 8%, 41%, 0.75)",
 ];
 
-export default function DoughnutChart({ items = [], classes = "" }) {
-  const dataValues = items.map((item) => item.maximum);
-  const dataLabels = items.map((item) => item.category);
+export default function DoughnutChart({
+  items: budgets = [],
+  classes = "",
+  transactions,
+}) {
+  const dataValues = budgets.map((budget) => budget.maximum);
+  const dataLabels = budgets.map((budget) => budget.category);
+
+  const budgetTotal = dataValues.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
+
+  const totalSpentAcrossAllBudgets = budgets.reduce((acc, budget) => {
+    const { totalSpent } = calculateBudgetSpentAndRemaining(
+      budget,
+      transactions,
+    );
+    return acc + totalSpent;
+  }, 0);
 
   const data = {
     labels: dataLabels,
@@ -53,8 +72,10 @@ export default function DoughnutChart({ items = [], classes = "" }) {
         }}
       />
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-        <p className="mb-100 text-3xl font-bold">$338</p>
-        <p className="text-grey-500 text-xs">of $975 limit</p>
+        <p className="mb-100 text-3xl font-bold">
+          {formatCurrencyNoCents(totalSpentAcrossAllBudgets)}
+        </p>
+        <p className="text-grey-500 text-xs">of ${budgetTotal} limit</p>
       </div>
     </div>
   );
