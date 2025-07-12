@@ -1,45 +1,5 @@
-import { useState, useEffect } from "react";
-
-function applyFilters(transactions, searchText, selectedCategory, sortOption) {
-  let filtered = transactions;
-
-  if (selectedCategory !== "All Transactions") {
-    filtered = filtered.filter((t) => t.category === selectedCategory);
-  }
-
-  const search = searchText.trim().toLowerCase();
-  if (search !== "") {
-    filtered = filtered.filter(
-      (transaction) =>
-        transaction.name.toLowerCase().includes(search) ||
-        transaction.category.toLowerCase().includes(search),
-    );
-  }
-
-  switch (sortOption) {
-    case "Latest":
-      filtered = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
-      break;
-    case "Oldest":
-      filtered = [...filtered].sort((a, b) => a.date.localeCompare(b.date));
-      break;
-    case "A to Z":
-      filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "Z to A":
-      filtered = [...filtered].sort((a, b) => b.name.localeCompare(a.name));
-      break;
-    case "Highest":
-      filtered = [...filtered].sort((a, b) => b.amount - a.amount);
-      break;
-    case "Lowest":
-      filtered = [...filtered].sort((a, b) => a.amount - b.amount);
-      break;
-    default:
-      break;
-  }
-  return filtered;
-}
+import { useState, useMemo } from "react";
+import { applyFilters } from "../utils/helpers";
 
 export default function useTransactionSearch(allTransactions, initialCategory) {
   const [searchText, setSearchText] = useState("");
@@ -47,19 +7,17 @@ export default function useTransactionSearch(allTransactions, initialCategory) {
   const [selectedCategory, setSelectedCategory] = useState(
     initialCategory ?? "All Transactions",
   );
-  const [filteredTransactions, setFilteredTransactions] = useState([]);
+
   const [sortOption, setSortOption] = useState("Latest");
 
-  useEffect(() => {
-    const newFiltered = applyFilters(
+  const filteredTransactions = useMemo(() => {
+    return applyFilters(
       allTransactions,
       searchText,
       selectedCategory,
       sortOption,
     );
-    setFilteredTransactions(newFiltered);
-    setCurrentPage(0);
-  }, [searchText, selectedCategory, sortOption, allTransactions]);
+  }, [allTransactions, searchText, selectedCategory, sortOption]);
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);

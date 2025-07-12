@@ -7,7 +7,7 @@ import OverviewPage from "./pages/Overview/OverviewPage";
 import PotsPage from "./pages/Savings/PotsPage";
 import TransactionsPage from "./pages/Transactions/TransactionsPage";
 import BudgetsPage from "./pages/Budgets/BudgetsPage";
-import BillsPage from "./pages/BillsPage";
+import BillsPage from "./pages/Bills/BillsPage";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           element={<TransactionsPage data={data} />}
         />
         <Route path="/budgets" element={<BudgetsPage data={data} />} />
-        <Route path="/bills" element={<BillsPage />} />
+        <Route path="/bills" element={<BillsPage data={data.transactions} />} />
       </Routes>
     </>
   );

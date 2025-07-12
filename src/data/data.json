@@ -132,7 +132,7 @@
       "avatar": "/assets/images/avatars/elevate-education.jpg",
       "name": "Elevate Education",
       "category": "Education",
-      "date": "2025-06-04T11:15:22Z",
+      "date": "2025-07-14T11:15:22Z",
       "amount": -50.0,
       "recurring": true
     },
@@ -140,7 +140,7 @@
       "avatar": "/assets/images/avatars/serenity-spa-and-wellness.jpg",
       "name": "Serenity Spa & Wellness",
       "category": "Personal Care",
-      "date": "2025-06-03T14:00:37Z",
+      "date": "2025-06-21T14:00:37Z",
       "amount": -30.0,
       "recurring": true
     },
@@ -148,7 +148,7 @@
       "avatar": "/assets/images/avatars/spark-electric-solutions.jpg",
       "name": "Spark Electric Solutions",
       "category": "Bills",
-      "date": "2025-06-02T09:25:11Z",
+      "date": "2025-06-01T09:25:11Z",
       "amount": -100.0,
       "recurring": true
     },
@@ -172,7 +172,7 @@
       "avatar": "/assets/images/avatars/aqua-flow-utilities.jpg",
       "name": "Aqua Flow Utilities",
       "category": "Bills",
-      "date": "2025-05-30T13:20:14Z",
+      "date": "2025-05-28T13:20:14Z",
       "amount": -100.0,
       "recurring": true
     },
@@ -180,7 +180,7 @@
       "avatar": "/assets/images/avatars/ecofuel-energy.jpg",
       "name": "EcoFuel Energy",
       "category": "Bills",
-      "date": "2025-05-29T11:55:29Z",
+      "date": "2025-05-25T11:55:29Z",
       "amount": -35.0,
       "recurring": true
     },
@@ -364,7 +364,7 @@
       "avatar": "/assets/images/avatars/elevate-education.jpg",
       "name": "Elevate Education",
       "category": "Education",
-      "date": "2025-05-05T11:15:22Z",
+      "date": "2025-05-01T11:15:22Z",
       "amount": -50.0,
       "recurring": true
     },
@@ -372,7 +372,7 @@
       "avatar": "/assets/images/avatars/serenity-spa-and-wellness.jpg",
       "name": "Serenity Spa & Wellness",
       "category": "Personal Care",
-      "date": "2025-05-03T14:00:37Z",
+      "date": "2025-05-07T14:00:37Z",
       "amount": -30.0,
       "recurring": true
     },
@@ -380,7 +380,7 @@
       "avatar": "/assets/images/avatars/spark-electric-solutions.jpg",
       "name": "Spark Electric Solutions",
       "category": "Bills",
-      "date": "2025-05-02T09:25:51Z",
+      "date": "2025-05-18T09:25:51Z",
       "amount": -100.0,
       "recurring": true
     },
