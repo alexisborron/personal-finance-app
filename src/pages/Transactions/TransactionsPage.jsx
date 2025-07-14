@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import useTransactionSearch from "../../hooks/useTransactionSearch";
-import Searchbar from "../../components/Searchbar";
+import InputField from "../../components/InputField";
 import FilterIcon from "../../assets/images/icon-filter-mobile.svg";
 import SortIcon from "../../assets/images/icon-sort-mobile.svg";
 import PaginatedTransactionList from "./PaginatedTransactionList";
@@ -67,7 +67,7 @@ export default function TransactionsPage({ data }) {
       <h1 className="text-heading">Transactions</h1>
       <section className="card-base mt-400 bg-white py-250 sm:py-400">
         <div className="relative mb-50 flex items-center gap-250">
-          <Searchbar
+          <InputField
             searchHandler={handleSearchChange}
             value={searchText}
             placeholder="Search transactions"

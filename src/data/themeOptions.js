@@ -1,0 +1,17 @@
+export const themes = [
+    { id: 1, colorName: "Green", colorClass: "bg-green" },
+    { id: 2, colorName: "Yellow", colorClass: "bg-yellow" },
+    { id: 3, colorName: "Cyan", colorClass: "bg-cyan" },
+    { id: 4, colorName: "Navy", colorClass: "bg-navy" },
+    { id: 5, colorName: "Red", colorClass: "bg-red" },
+    { id: 6, colorName: "Purple", colorClass: "bg-purple" },
+    { id: 7, colorName: "Turquoise", colorClass: "bg-turquoise" },
+    { id: 8, colorName: "Brown", colorClass: "bg-brown" },
+    { id: 9, colorName: "Magenta", colorClass: "bg-magenta" },
+    { id: 10, colorName: "Blue", colorClass: "bg-blue" },
+    { id: 11, colorName: "Navy Grey", colorClass: "bg-navygrey" },
+    { id: 12, colorName: "Army Green", colorClass: "bg-armygreen" },
+    { id: 13, colorName: "Pink", colorClass: "bg-pink" },
+    { id: 14, colorName: "Gold", colorClass: "bg-gold" },
+    { id: 15, colorName: "Orange", colorClass: "bg-orange" },
+];

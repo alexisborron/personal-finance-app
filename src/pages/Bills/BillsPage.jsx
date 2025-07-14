@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useTransactionSearch from "../../hooks/useTransactionSearch";
 import RecurringBillsIcon from "../../assets/images/icon-recurring-bills.svg";
-import Searchbar from "../../components/Searchbar";
+import InputField from "../../components/InputField";
 import DropdownMenu from "../../components/DropdownMenu";
 import SortIcon from "../../assets/images/icon-sort-mobile.svg";
 import BillListItem from "../Bills/BillListItem";
@@ -115,8 +115,9 @@ export default function BillsPage({ data: transactions }) {
       </div>
       <section className="card-base bg-white">
         <div className="flex items-center gap-250">
-          <Searchbar
-            searchHandler={handleSearchChange}
+          <InputField
+            type="search"
+            onChange={handleSearchChange}
             value={searchText}
             placeholder="Search bills"
           />

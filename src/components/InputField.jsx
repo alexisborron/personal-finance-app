@@ -1,0 +1,30 @@
+import SearchIcon from "../assets/images/icon-search.svg";
+export default function InputField({
+  type,
+  id,
+  onChange,
+  value,
+  placeholder,
+  children = null,
+}) {
+  return (
+    <div className="relative flex flex-1 items-center">
+      {type === "search" && (
+        <img
+          src={SearchIcon}
+          className="absolute right-250 h-[16px] w-[16px]"
+          alt="Search Icon"
+        />
+      )}
+      {children}
+      <input
+        type={type}
+        id={id}
+        className={`border-beige-500 text-beige-500 placeholder-beige-500 w-full rounded-lg border-1 ${type === "number" ? "pl-500" : "pl-250"} py-150 pr-250 text-sm`}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      ></input>
+    </div>
+  );
+}
