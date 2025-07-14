@@ -68,7 +68,7 @@ export default function TransactionsPage({ data }) {
       <section className="card-base mt-400 bg-white py-250 sm:py-400">
         <div className="relative mb-50 flex items-center gap-250">
           <InputField
-            searchHandler={handleSearchChange}
+            onChange={handleSearchChange}
             value={searchText}
             placeholder="Search transactions"
           />

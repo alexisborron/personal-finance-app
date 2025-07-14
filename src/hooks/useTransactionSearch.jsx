@@ -21,6 +21,7 @@ export default function useTransactionSearch(allTransactions, initialCategory) {
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
+    setCurrentPage(0);
   };
 
   const handlePageChange = (selectedPage) => {

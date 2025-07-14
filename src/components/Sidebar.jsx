@@ -1,14 +1,26 @@
 import { NavLink } from "react-router-dom";
 
 function navLinkClass({ isActive }) {
-  return `block border-b-4 px-300 pt-100 pb-100 ${isActive ? "rounded-t-lg border-green bg-white" : "border-transparent"}`;
+  return `
+    flex             
+    flex-col         
+    items-center     
+    justify-center   
+    w-full h-full    
+    pt-100 pb-100
+    ${isActive ? "rounded-t-lg border-b-green border-b-4 bg-white" : "border-b-transparent border-b-4"}
+  `;
 }
 
 function Sidebar() {
   return (
     <nav className="bg-grey-900 fixed bottom-0 left-0 z-50 w-full rounded-t-lg px-200 pt-100">
-      <ul className="flex items-end justify-between">
-        <li className="flex h-full flex-col items-center">
+      <ul className="flex h-full w-full items-end justify-around">
+        {" "}
+        {/* ul is still the flex container */}
+        <li className="flex h-full flex-1 flex-col items-center justify-center">
+          {" "}
+          {/* Each li grows and acts as a flex container for its NavLink */}
           <NavLink to="/" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
@@ -28,7 +40,7 @@ function Sidebar() {
             )}
           </NavLink>
         </li>
-        <li className="flex h-full flex-col items-center">
+        <li className="flex h-full flex-1 flex-col items-center justify-center">
           <NavLink to="/transactions" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
@@ -48,7 +60,7 @@ function Sidebar() {
             )}
           </NavLink>
         </li>
-        <li className="flex h-full flex-col items-center">
+        <li className="flex h-full flex-1 flex-col items-center justify-center">
           <NavLink to="/budgets" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
@@ -68,7 +80,7 @@ function Sidebar() {
             )}
           </NavLink>
         </li>
-        <li className="flex h-full flex-col items-center">
+        <li className="flex h-full flex-1 flex-col items-center justify-center">
           <NavLink to="/pots" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
@@ -88,7 +100,7 @@ function Sidebar() {
             )}
           </NavLink>
         </li>
-        <li className="flex h-full flex-col items-center">
+        <li className="flex h-full flex-1 flex-col items-center justify-center">
           <NavLink to="/bills" className={navLinkClass}>
             {({ isActive }) => (
               <div className="flex h-6 w-6 items-center justify-center">
