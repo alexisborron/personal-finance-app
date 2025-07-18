@@ -210,6 +210,105 @@ progress {
   }
 }
 
+.progress-pink {
+  &::-webkit-progress-value {
+    background-color: var(--color-pink);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-pink);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-turquoise {
+  &::-webkit-progress-value {
+    background-color: var(--color-turquoise);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-turquoise);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-brown {
+  &::-webkit-progress-value {
+    background-color: var(--color-brown);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-brown);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-magenta {
+  &::-webkit-progress-value {
+    background-color: var(--color-magenta);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-magenta);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-blue {
+  &::-webkit-progress-value {
+    background-color: var(--color-blue);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-blue);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-navygrey {
+  &::-webkit-progress-value {
+    background-color: var(--color-navygrey);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-navygrey);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-armygreen {
+  &::-webkit-progress-value {
+    background-color: var(--color-armygreen);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-armygreen);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-gold {
+  &::-webkit-progress-value {
+    background-color: var(--color-gold);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-gold);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
+.progress-orange {
+  &::-webkit-progress-value {
+    background-color: var(--color-orange);
+    border-radius: calc(infinity * 1px);
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-orange);
+    border-radius: calc(infinity * 1px);
+  }
+}
+
 /* BUDGET PROGRESS BAR */
 .budget-progress-track::-webkit-progress-bar {
   background-color: var(--color-beige-100);
@@ -279,6 +378,105 @@ progress {
   }
   &::-moz-progress-bar {
     background-color: var(--color-red);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-pink {
+  &::-webkit-progress-value {
+    background-color: var(--color-pink);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-pink);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-turquoise {
+  &::-webkit-progress-value {
+    background-color: var(--color-turquoise);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-turquoise);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-brown {
+  &::-webkit-progress-value {
+    background-color: var(--color-brown);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-brown);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-magenta {
+  &::-webkit-progress-value {
+    background-color: var(--color-magenta);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-magenta);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-blue {
+  &::-webkit-progress-value {
+    background-color: var(--color-blue);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-blue);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-navygrey {
+  &::-webkit-progress-value {
+    background-color: var(--color-navygrey);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-navygrey);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-armygreen {
+  &::-webkit-progress-value {
+    background-color: var(--color-armygreen);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-armygreen);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-gold {
+  &::-webkit-progress-value {
+    background-color: var(--color-gold);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-gold);
+    border-radius: 4px;
+  }
+}
+
+.budget-progress-orange {
+  &::-webkit-progress-value {
+    background-color: var(--color-orange);
+    border-radius: 4px;
+  }
+  &::-moz-progress-bar {
+    background-color: var(--color-orange);
     border-radius: 4px;
   }
 }

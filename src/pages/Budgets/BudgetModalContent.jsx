@@ -1,9 +1,7 @@
-import { useState } from "react";
 import InputField from "../../components/InputField";
 import ModalDropdownList from "../../components/ModalDropdownList";
 
 export default function BudgetModalContent({ categoryItems, themeItems }) {
-  const [maxSpend, setMaxSpend] = useState("");
   return (
     <>
       <div>
@@ -14,6 +12,7 @@ export default function BudgetModalContent({ categoryItems, themeItems }) {
           Budget Category
         </p>
         <ModalDropdownList
+          name="category"
           items={categoryItems}
           ariaLabelledby="category-label"
           className={"mt-[12px]"}
@@ -27,10 +26,9 @@ export default function BudgetModalContent({ categoryItems, themeItems }) {
           Maximum Spending
         </label>
         <InputField
+          name="maxSpend"
           type="number"
           id="max-spend"
-          onChange={(e) => setMaxSpend(e.target.value)}
-          value={maxSpend}
           placeholder="e.g. 2000"
         >
           <span className="text-beige-500 absolute left-200">$</span>
@@ -44,6 +42,7 @@ export default function BudgetModalContent({ categoryItems, themeItems }) {
           Color Tag
         </p>
         <ModalDropdownList
+          name="theme"
           items={themeItems}
           ariaLabelledby="color-tag-label"
           className={"mt-[12px]"}

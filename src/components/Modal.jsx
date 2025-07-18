@@ -16,6 +16,12 @@ export default function Modal({
   paragraphText,
   buttonText,
 }) {
+  function handleSubmit(formData) {
+    const dataObject = Object.fromEntries(formData.entries());
+    console.log(dataObject);
+    return dataObject;
+  }
+
   return (
     <Dialog
       open={isOpen}
@@ -45,11 +51,17 @@ export default function Modal({
             <p className="text-grey-500 my-250 text-sm leading-[1.5]">
               {paragraphText}
             </p>
-            <div className="mb-250 flex flex-col gap-200">{children}</div>
-            <Button
-              buttonText={buttonText}
-              buttonStyles="bg-black text-white w-full"
-            />
+            <form
+              action={handleSubmit}
+              className="mb-250 flex flex-col gap-200"
+            >
+              {children}
+              <Button
+                type="submit"
+                buttonText={buttonText}
+                buttonStyles="bg-black text-white w-full"
+              />
+            </form>
           </DialogPanel>
         </div>
       </div>

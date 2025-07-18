@@ -1,10 +1,10 @@
 import SearchIcon from "../assets/images/icon-search.svg";
 export default function InputField({
+  name,
   type,
   id,
-  onChange,
-  value,
   placeholder,
+  value,
   children = null,
 }) {
   return (
@@ -18,12 +18,12 @@ export default function InputField({
       )}
       {children}
       <input
+        name={name}
         type={type}
         id={id}
         className={`border-beige-500 text-beige-500 placeholder-beige-500 w-full rounded-lg border-1 ${type === "number" ? "pl-500" : "pl-250"} py-150 pr-250 text-sm`}
-        onChange={onChange}
-        value={value}
         placeholder={placeholder}
+        value={value}
       ></input>
     </div>
   );
