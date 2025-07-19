@@ -30,6 +30,7 @@ export default function BudgetModalContent({ categoryItems, themeItems }) {
           type="number"
           id="max-spend"
           placeholder="e.g. 2000"
+          required
         >
           <span className="text-beige-500 absolute left-200">$</span>
         </InputField>

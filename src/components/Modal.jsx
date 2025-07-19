@@ -15,11 +15,12 @@ export default function Modal({
   onClose,
   paragraphText,
   buttonText,
+  onSubmit,
 }) {
   function handleSubmit(formData) {
     const dataObject = Object.fromEntries(formData.entries());
-    console.log(dataObject);
-    return dataObject;
+    onSubmit(dataObject);
+    onClose();
   }
 
   return (

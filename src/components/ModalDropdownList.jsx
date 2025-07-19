@@ -31,12 +31,13 @@ export default function ModalDropdownList({
                 <div
                   className={`h-200 w-200 rounded-full ${selectedItem?.colorClass}`}
                 ></div>
-                {selectedItem?.colorName}
+                {selectedItem?.id}
               </div>
             ) : (
               selectedItem
             )}
           </ListboxButton>
+
           <ListboxOptions
             anchor="bottom"
             className={`shadow-3xl z-50 w-[var(--button-width)] rounded-lg bg-white ${className}`}
@@ -53,7 +54,7 @@ export default function ModalDropdownList({
                       <div
                         className={`mr-200 inline-block h-200 w-200 rounded-full ${item.colorClass}`}
                       ></div>
-                      {item.colorName}
+                      {item.id}
                     </div>
                   ) : (
                     item
@@ -65,6 +66,13 @@ export default function ModalDropdownList({
         </div>
       </Listbox>
       <input type="hidden" name={name} value={hiddenValue} />
+      {isTheme && (
+        <input
+          type="hidden"
+          name={`${name}-colorValue`}
+          value={selectedItem?.colorValue ?? ""}
+        />
+      )}
     </>
   );
 }

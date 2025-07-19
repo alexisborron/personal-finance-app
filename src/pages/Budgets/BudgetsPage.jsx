@@ -14,11 +14,29 @@ export default function BudgetsPage({ data }) {
   const budgets = data.budgets;
   const transactions = data.transactions;
 
+  const [budgetsList, setBudgetsList] = useState([...budgets]);
+
+  function handleAddBudget(dataObject) {
+    const newBudget = {
+      id: Date.now(),
+      category: dataObject.category,
+      maximum: parseFloat(dataObject.maxSpend),
+      theme: dataObject.theme,
+      colorValue: dataObject["theme-colorValue"], // <-- Use this key here
+    };
+
+    setBudgetsList((prev) => {
+      const updatedList = [newBudget, ...prev];
+      console.log("Updated budgets list:", updatedList); // ✅ logs the full list
+      return updatedList;
+    }); // Add to top
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenChange = () => setIsModalOpen(!isModalOpen);
 
-  const alphabeticalBudgetList = [...budgets].sort((a, b) =>
+  const alphabeticalBudgetList = [...budgetsList].sort((a, b) =>
     a.category.localeCompare(b.category),
   );
 
@@ -36,7 +54,7 @@ export default function BudgetsPage({ data }) {
         <section className="card-base mb-300 bg-white">
           <DoughnutChart
             classes="mt-300 mb-500"
-            items={budgets}
+            items={budgetsList}
             transactions={transactions}
           />
           <h2 className="text-heading-secondary mb-300">Spending Summary</h2>
@@ -71,7 +89,7 @@ export default function BudgetsPage({ data }) {
             })}
           </ul>
         </section>
-        {budgets.map((budget, index) => {
+        {budgetsList.map((budget, index) => {
           const { totalSpent, remaining } = calculateBudgetSpentAndRemaining(
             budget,
             transactions,
@@ -103,6 +121,7 @@ export default function BudgetsPage({ data }) {
         buttonText="Add Budget"
         paragraphText="Choose a category to set a spending budget. These categories can
               help you monitor spending."
+        onSubmit={handleAddBudget}
       >
         <BudgetModalContent
           categoryItems={[...new Set(transactions.map((t) => t.category))]}

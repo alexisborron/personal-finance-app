@@ -5,19 +5,6 @@ import { formatCurrencyNoCents } from "../utils/format";
 
 ChartJS.register(ArcElement);
 
-const OUTER_COLORS = [
-  "hsl(177 52% 32%)",
-  "hsl(190 52% 68%)",
-  "hsl(28 73% 81%)",
-  "hsl(248 8% 41%)",
-];
-const INNER_COLORS = [
-  "hsla(177, 52%, 32%, 0.75)",
-  "hsla(190, 52%, 68%, 0.75)",
-  "hsla(28, 73%, 81%, 0.75)",
-  "hsla(248, 8%, 41%, 0.75)",
-];
-
 export default function DoughnutChart({
   items: budgets = [],
   classes = "",
@@ -25,6 +12,12 @@ export default function DoughnutChart({
 }) {
   const dataValues = budgets.map((budget) => budget.maximum);
   const dataLabels = budgets.map((budget) => budget.category);
+
+  const OUTER_COLORS = budgets.map((budget) => budget.colorValue);
+
+  const INNER_COLORS = budgets.map((budget) =>
+    budget.colorValue.replace(/^hsl\((.+)\)$/, "hsla($1 / 0.75)"),
+  );
 
   const budgetTotal = dataValues.reduce(
     (accumulator, currentValue) => accumulator + currentValue,

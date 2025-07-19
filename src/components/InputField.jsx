@@ -6,6 +6,7 @@ export default function InputField({
   placeholder,
   value,
   children = null,
+  required,
 }) {
   return (
     <div className="relative flex flex-1 items-center">
@@ -24,6 +25,7 @@ export default function InputField({
         className={`border-beige-500 text-beige-500 placeholder-beige-500 w-full rounded-lg border-1 ${type === "number" ? "pl-500" : "pl-250"} py-150 pr-250 text-sm`}
         placeholder={placeholder}
         value={value}
+        required={required}
       ></input>
     </div>
   );
